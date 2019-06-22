@@ -37,6 +37,10 @@
                             <td>{!! $lesson->full_text !!}</td>
                         </tr>
                         <tr>
+                            <th>@lang('Code')</th>
+                            <td>{!! $lesson->code !!}</td>
+                        </tr>
+                        <tr>
                             <th>@lang('global.lessons.fields.position')</th>
                             <td>{{ $lesson->position }}</td>
                         </tr>
@@ -60,13 +64,13 @@
                 </div>
             </div><!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
-    
+
 <li role="presentation" class="active"><a href="#tests" aria-controls="tests" role="tab" data-toggle="tab">Tests</a></li>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
-    
+
 <div role="tabpanel" class="tab-pane active" id="tests">
 <table class="table table-bordered table-striped {{ count($tests) > 0 ? 'datatable' : '' }}">
     <thead>

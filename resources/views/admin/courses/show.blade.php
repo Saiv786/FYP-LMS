@@ -24,18 +24,18 @@
                             <th>@lang('global.courses.fields.title')</th>
                             <td>{{ $course->title }}</td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <th>@lang('global.courses.fields.slug')</th>
                             <td>{{ $course->slug }}</td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <th>@lang('global.courses.fields.description')</th>
                             <td>{!! $course->description !!}</td>
                         </tr>
-                        <tr>
+                       {{--  <tr>
                             <th>@lang('global.courses.fields.price')</th>
                             <td>{{ $course->price }}</td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <th>@lang('global.courses.fields.course-image')</th>
                             <td>@if($course->course_image)<a href="{{ asset('uploads/' . $course->course_image) }}" target="_blank"><img src="{{ asset('uploads/thumb/' . $course->course_image) }}"/></a>@endif</td>
@@ -52,21 +52,21 @@
                 </div>
             </div><!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
-    
+
 <li role="presentation" class="active"><a href="#lessons" aria-controls="lessons" role="tab" data-toggle="tab">Lessons</a></li>
 <li role="presentation" class=""><a href="#tests" aria-controls="tests" role="tab" data-toggle="tab">Tests</a></li>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
-    
+
 <div role="tabpanel" class="tab-pane active" id="lessons">
 <table class="table table-bordered table-striped {{ count($lessons) > 0 ? 'datatable' : '' }}">
     <thead>
         <tr>
             <th>@lang('global.lessons.fields.course')</th>
                         <th>@lang('global.lessons.fields.title')</th>
-                        <th>@lang('global.lessons.fields.slug')</th>
+                        {{-- <th>@lang('global.lessons.fields.slug')</th> --}}
                         <th>@lang('global.lessons.fields.lesson-image')</th>
                         <th>@lang('global.lessons.fields.short-text')</th>
                         <th>@lang('global.lessons.fields.full-text')</th>
@@ -88,7 +88,7 @@
                 <tr data-entry-id="{{ $lesson->id }}">
                     <td>{{ $lesson->course->title or '' }}</td>
                                 <td>{{ $lesson->title }}</td>
-                                <td>{{ $lesson->slug }}</td>
+                                {{-- <td>{{ $lesson->slug }}</td> --}}
                                 <td>@if($lesson->lesson_image)<a href="{{ asset('uploads/' . $lesson->lesson_image) }}" target="_blank"><img src="{{ asset('uploads/thumb/' . $lesson->lesson_image) }}"/></a>@endif</td>
                                 <td>{!! $lesson->short_text !!}</td>
                                 <td>{!! $lesson->full_text !!}</td>

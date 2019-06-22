@@ -2,7 +2,7 @@
 
 @section('content')
     <h3 class="page-title">@lang('global.courses.title')</h3>
-    
+
     {!! Form::model($course, ['method' => 'PUT', 'route' => ['admin.courses.update', $course->id], 'files' => true,]) !!}
 
     <div class="panel panel-default">
@@ -37,7 +37,7 @@
                     @endif
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('slug', 'Slug', ['class' => 'control-label']) !!}
                     {!! Form::text('slug', old('slug'), ['class' => 'form-control', 'placeholder' => '']) !!}
@@ -48,7 +48,7 @@
                         </p>
                     @endif
                 </div>
-            </div>
+            </div> --}}
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('description', 'Description', ['class' => 'control-label']) !!}
@@ -61,7 +61,7 @@
                     @endif
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('price', 'Price', ['class' => 'control-label']) !!}
                     {!! Form::text('price', old('price'), ['class' => 'form-control', 'placeholder' => '']) !!}
@@ -72,7 +72,7 @@
                         </p>
                     @endif
                 </div>
-            </div>
+            </div> --}}
             <div class="row">
                 <div class="col-xs-12 form-group">
                     @if ($course->course_image)
@@ -105,7 +105,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('published', 'Published', ['class' => 'control-label']) !!}
+                    {!! Form::label('published', 'Active', ['class' => 'control-label']) !!}
                     {!! Form::hidden('published', 0) !!}
                     {!! Form::checkbox('published', 1, old('published'), []) !!}
                     <p class="help-block"></p>
@@ -116,7 +116,7 @@
                     @endif
                 </div>
             </div>
-            
+
         </div>
     </div>
 

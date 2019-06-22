@@ -9,9 +9,9 @@
         @foreach($purchased_courses as $course)
             <div class="col-sm-4 col-lg-4 col-md-4">
                 <div class="thumbnail">
-                    <img src="http://placehold.it/320x150" alt="">
+                    <img src="{{ asset('uploads/' . $course->course_image) }}" alt="">
                     <div class="caption">
-                        <h4><a href="{{ route('courses.show', [$course->slug]) }}">{{ $course->title }}</a>
+                        <h4><a href="{{ route('courses.show', [$course->id]) }}">{{ $course->title }}</a>
                         </h4>
                         <p>{{ $course->description }}</p>
                     </div>
@@ -32,10 +32,10 @@
     @foreach($courses as $course)
         <div class="col-sm-4 col-lg-4 col-md-4">
             <div class="thumbnail">
-                <img src="http://placehold.it/320x150" alt="">
+                <img src="{{ asset('uploads/' . $course->course_image) }}" alt="">
                 <div class="caption">
-                    <h4 class="pull-right">${{ $course->price }}</h4>
-                    <h4><a href="{{ route('courses.show', [$course->slug]) }}">{{ $course->title }}</a>
+
+                    <h4><a href="{{ route('courses.show', [$course->id]) }}">{{ $course->title }}</a>
                     </h4>
                     <p>{{ $course->description }}</p>
                 </div>

@@ -8,7 +8,7 @@
         <div class="panel-heading">
             @lang('global.app_create')
         </div>
-        
+
         <div class="panel-body">
             @if (Auth::user()->isAdmin())
             <div class="row">
@@ -36,7 +36,7 @@
                     @endif
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('slug', 'Slug', ['class' => 'control-label']) !!}
                     {!! Form::text('slug', old('slug'), ['class' => 'form-control', 'placeholder' => '']) !!}
@@ -47,7 +47,7 @@
                         </p>
                     @endif
                 </div>
-            </div>
+            </div> --}}
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('description', 'Description', ['class' => 'control-label']) !!}
@@ -60,7 +60,7 @@
                     @endif
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('price', 'Price', ['class' => 'control-label']) !!}
                     {!! Form::text('price', old('price'), ['class' => 'form-control', 'placeholder' => '']) !!}
@@ -71,7 +71,7 @@
                         </p>
                     @endif
                 </div>
-            </div>
+            </div> --}}
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('course_image', 'Course image', ['class' => 'control-label']) !!}
@@ -101,7 +101,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('published', 'Published', ['class' => 'control-label']) !!}
+                    {!! Form::label('published', 'Active', ['class' => 'control-label']) !!}
                     {!! Form::hidden('published', 0) !!}
                     {!! Form::checkbox('published', 1, false, []) !!}
                     <p class="help-block"></p>
@@ -112,7 +112,7 @@
                     @endif
                 </div>
             </div>
-            
+
         </div>
     </div>
 

@@ -9,13 +9,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{ $page_title or 'Quick LMS' }}</title>
+    <title>{{ $page_title or 'OOP Teacher' }}</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="/css/shop-homepage.css" rel="stylesheet">
+    @yield('head_home');
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,16 +42,17 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/">Quick LMS</a>
+                        <a class="navbar-brand" href="/">OOP Teacher</a>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li>
-                                <a href="#">About</a>
+                            @if(Auth::check()&&Auth::user()->isAdmin())<li>
+                                <a href="{{ route('admin.courses.index') }}">Admin Console</a>
                             </li>
+                            @endif
                             <li>
-                                <a href="#">Services</a>
+                                <a href="{{ route('compiler.index') }}">Editor</a>
                             </li>
                             <li>
                                 <a href="#">Contact</a>
@@ -62,19 +64,35 @@
                 <div class="col-lg-6 text-right" style="padding-top: 10px">
                     @if (Auth::check())
                         <div style="color:white">
-                            Logged in as {{ Auth::user()->email }}
-                            <form action="{{ route('auth.logout') }}" method="post">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                {{ Auth::user()->name }} <span class="caret"></span></button>
+                                <ul class="dropdown-menu" role="menu">
+                                  <li><a href="{{ route('auth.logout') }}" method="post">Logout</a></li>
+                                </ul>
+                              </div>
+
+                             {{-- {{ Auth::user()->name }} --}}
+
+                            {{-- <form action="{{ route('auth.logout') }}" method="post">
+                            <a href="{{ route('auth.logout') }}" class="btn btn-info">{{ Auth::user()->name }}</a>
                                 {{ csrf_field() }}
                                 <input type="submit" value="Logout" class="btn btn-info">
-                            </form>
+                            </form> --}}
                         </div>
                     @else
-                        <form action="{{ route('auth.login') }}" method="post">
+
+
+                        <a class="btn btn-primary" href="{{ route('auth.login') }}">{{ __('Login') }}</a>
+                        @if (Route::has('auth.register'))
+                                <a class="btn btn-primary" href="{{ route('auth.register') }}">{{ __('Register') }}</a>
+                        @endif
+                        {{-- <form action="{{ route('auth.login') }}" method="post">
                             {{ csrf_field() }}
                             <input type="email" name="email" placeholder="Email" />
                             <input type="password" name="password" placeholder="Password" />
                             <input type="submit" value="Login" class="btn btn-info">
-                        </form>
+                        </form> --}}
                     @endif
                 </div>
             </div>
@@ -98,6 +116,7 @@
                 <div class="row">
 
                     @yield('main')
+                    @yield('content')
 
                 </div>
 
@@ -116,7 +135,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Quick LMS 2017</p>
+                    <p>Copyright &copy; OOP Teacher 2017</p>
                 </div>
             </div>
         </footer>

@@ -8,7 +8,7 @@
         <div class="panel-heading">
             @lang('global.app_create')
         </div>
-        
+
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 form-group">
@@ -87,6 +87,18 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
+                    {!! Form::label('code', 'Code', ['class' => 'control-label']) !!}
+                    {!! Form::textarea('code', old('code'), ['class' => 'form-control ', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('code'))
+                        <p class="help-block">
+                            {{ $errors->first('code') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
                     {!! Form::label('downloadable_files', 'Downloadable files', ['class' => 'control-label']) !!}
                     {!! Form::file('downloadable_files[]', [
                         'multiple',
@@ -133,7 +145,7 @@
                     @endif
                 </div>
             </div>
-            
+
         </div>
     </div>
 
