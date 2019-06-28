@@ -89,7 +89,7 @@ editor.setTheme("ace/theme/monokai");
 editor.getSession().setMode("ace/mode/java");
 editor.getSession().setUseWorker(false);
 $('#status p').fadeOut();
-
+editor.setOption("showPrintMargin", false)
 function myFunction(){
     $('#status p').fadeIn();
 

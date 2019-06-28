@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use App\Lesson;
 use App\Tutorial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class CompilerController extends Controller {
 	public function index() {
@@ -16,6 +18,8 @@ class CompilerController extends Controller {
    		System.out.println(\"Hello Worlds\");
    	}
  }";
+		$courses = Course::where('published', 1)->orderBy('id', 'desc')->get();
+		view::share('courses');
 
 		return view('Compiler.index', ['compiler' => $compiler]);
 	}
@@ -29,7 +33,13 @@ class CompilerController extends Controller {
 		exec("java -jar ~/NetBeansProjects/JavaApplication7/dist/JavaApplication7.jar '{$tryit_code}' 'Hello,testing' ", $out);
 		$compiler['output'] = implode("\n", $out);
 		$compiler['code'] = $tryit_code;
-		\Log::debug($compiler['output']);
+		try {
+
+			file_exists('~/NetBeansProjects/JavaApplication7/dist/JavaApplication7.jar');
+		} catch (Exception $e) {
+			throw new Exception($e, 400);
+		}
+
 		return view('Compiler.index', ['compiler' => $compiler]);
 
 	}
