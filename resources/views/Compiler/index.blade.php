@@ -171,7 +171,7 @@
                     if(codes[i]){
                         editor.setValue(codes[i]);
                     }else{
-                        editor.setValue('');
+                        editor.setValue('public class '+x+' {\n\tpublic void test(){\n\t\t System.out.println("Hello Worlds");\n\t}\n}');
                     }
                     current_tab=i;
                     myFunction();
