@@ -11,13 +11,18 @@ use Illuminate\Support\Facades\View;
 class CompilerController extends Controller {
 	public function index() {
 		$compiler['output'] = "";
+
+		// \Log::debug(resource_path('assets/JavaApplication7.jar'));
+
 		$compiler['code'] = "public class moeez {\n	public static void main(String[] args) {
-		 testing t=new testing();
-		 t.test(); \n } \n }:,: \npublic class testing {
-	public void test(){
-   		System.out.println(\"Hello Worlds\");
-   	}
- }";
+			 System.out.println(\"Hello Worlds\");\n } \n }";
+		// 	$compiler['code'] = "public class moeez {\n	public static void main(String[] args) {
+		// 	 testing t=new testing();
+		// 	 t.test(); \n } \n }:,: \npublic class testing {
+		// public void test(){
+		//   		System.out.println(\"Hello Worlds\");
+		//   	}
+		// }";
 		$courses = Course::where('published', 1)->orderBy('id', 'desc')->get();
 		view::share('courses');
 
@@ -29,8 +34,12 @@ class CompilerController extends Controller {
 	}
 	public function store(Request $request) {
 
+		$path = resource_path('assets/JavaApplication7.jar');
+
 		$tryit_code = $request->get('code');
 		exec("java -jar ~/NetBeansProjects/JavaApplication7/dist/JavaApplication7.jar '{$tryit_code}' 'Hello,testing' ", $out);
+		// exec("java -jar " . $path . "'{$tryit_code}' 'Hello,testing' ", $out);
+		// \Log::debug("java -jar " . $path . "'{$tryit_code}' 'Hello,testing' ");
 		$compiler['output'] = implode("\n", $out);
 		$compiler['code'] = $tryit_code;
 		try {

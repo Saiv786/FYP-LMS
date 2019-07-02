@@ -9,7 +9,7 @@
         {{-- @foreach ($courses as $list_lesson) --}}
             {{-- <a href="{{ route('lessons.show', [$list_lesson->course_id, $list_lesson->id]) }}" class="list-group-item" --}}
             {{-- <div class="input-group"> --}}
-                <a href="#" class="list-group-item" onclick="changeCoder(event,1)">
+                <a href="#" class="list-group-item" onclick="changeCoder(event,0)">
                     Main
                 </a>
                 {{-- <span class="input-group-btn">
@@ -134,7 +134,8 @@
             $("#status p").delay(500).fadeOut(200);
             // var code = editor.getValue();
             codes[current_tab]=editor.getValue();
-            $("#code").val(codes);
+            var x= codes.join(':,:');
+            $("#code").val(x);
             // document.getElementById('code').value=code;
             // var iframe = document.createElement('iframe');
 
