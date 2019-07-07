@@ -1,6 +1,8 @@
-@extends('layouts.home')
+@extends('layouts.user_layout')
 
 @section('sidebar')
+            <div class="col-md-3">
+
     <p class="lead">{{ $course->title }}</p>
 
     <div class="list-group">
@@ -9,15 +11,17 @@
                 >{{ $loop->iteration }}. {{ $list_lesson->title }}</a>
         @endforeach
     </div>
+</div>
 @endsection
 
-@section('main')
+@section('content')
 
 
     <h2>{{ $course->title }}</h2>
 
     @if ($purchased_course)
         Rating: {{ $course->rating }} / 5
+        <br />
         <br />
         <b>Rate the course:</b>
         <br />

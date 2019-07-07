@@ -9,6 +9,7 @@ use App\Http\Requests\Admin\StoreCoursesRequest;
 use App\Http\Requests\Admin\UpdateCoursesRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Session;
 
 class CoursesController extends Controller {
 	use FileUploadTrait;
@@ -64,7 +65,20 @@ class CoursesController extends Controller {
 		$teachers = \Auth::user()->isAdmin() ? array_filter((array) $request->input('teachers')) : [\Auth::user()->id];
 		$course->teachers()->sync($teachers);
 
-		return redirect()->route('admin.courses.index');
+		$validater = $this->validate($request, [
+			'title' => 'required|regex:/^[a-zA-Z]+$/|max:255',
+
+		]);
+
+		if ($validater) {
+			return redirect()->route('admin.courses.index')->withErrors($validater);
+		} else {
+
+			Session::flash('message', "Successfully registered");
+
+			return redirect()->route('admin.courses.index');
+		}
+
 	}
 
 	/**

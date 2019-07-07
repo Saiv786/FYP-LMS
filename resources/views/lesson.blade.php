@@ -1,6 +1,8 @@
-@extends('layouts.home')
+@extends('layouts.user_layout')
 
-@section('sidebar')
+{{-- @section('sidebar')
+<div class="col-md-3">
+
     <p class="lead">{{ $lesson->course->title }}</p>
 
     <div class="list-group">
@@ -9,10 +11,13 @@
                 @if ($list_lesson->id == $lesson->id) style="font-weight: bold" @endif>{{ $loop->iteration }}. {{ $list_lesson->title }}</a>
         @endforeach
     </div>
-@endsection
+</div>
+@endsection --}}
 
 @section('main')
+<div class="col-md-9">
 
+                <div class="row">
     <h2>{{ $lesson->title }}</h2>
 
     @if ($purchased_course || $lesson->free_lesson == 1)
@@ -51,12 +56,15 @@
     @else
         Please <a href="{{ route('courses.show', [$lesson->course->id]) }}">go back</a> and buy the course.
     @endif
+</div>
+<div class="row">
 
     @if ($previous_lesson)
-        <p><a href="{{ route('lessons.show', [$previous_lesson->course_id, $previous_lesson->id]) }}"><< {{ $previous_lesson->title }}</a></p>
+        <p ><a class="genric-btn primary circle" href="{{ route('lessons.show', [$previous_lesson->course_id, $previous_lesson->id]) }}"><< {{ $previous_lesson->title }}</a></p>
     @endif
     @if ($next_lesson)
-        <p><a href="{{ route('lessons.show', [$next_lesson->course_id, $next_lesson->id]) }}">{{ $next_lesson->title }} >></a></p>
+        <p ><a class="genric-btn primary circle" href="{{ route('lessons.show', [$next_lesson->course_id, $next_lesson->id]) }}">{{ $next_lesson->title }} >></a></p>
     @endif
-
+</div>
+</div>
 @endsection

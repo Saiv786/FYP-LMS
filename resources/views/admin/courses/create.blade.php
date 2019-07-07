@@ -1,8 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+@if(count($errors) > 0)
+  <div class="alert alert-danger">
+    <strong>Whoops!!!</strong> There were some problem with your input <br/>
+    <ul>
+      @foreach ($errors->all() as $error )
+          <li> {{ $error }} </li>
+      @endforeach
+    </ul>
+  </div>
+@endif
+
+@if(Session::has('message'))
+                <div class="alert alert-success">
+                    {{ Session::get('message') }}
+                </div>
+                @endif
+
     <h3 class="page-title">@lang('global.courses.title')</h3>
-    {!! Form::open(['method' => 'POST', 'route' => ['admin.courses.store'], 'files' => true,]) !!}
+    {!! Form::open(['onSubmit'=>"myFunction()",'method' => 'POST', 'route' => ['admin.courses.store'], 'files' => true,]) !!}
 
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -12,10 +31,10 @@
         <div class="panel-body">
             @if (Auth::user()->isAdmin())
             <div class="row">
-                <div class="col-xs-12 form-group">
+                <div class="col-xs-12 form-group" value="{{ auth::user()->teachers }}">
                     {!! Form::label('teachers', 'Teachers', ['class' => 'control-label']) !!}
                     {!! Form::select('teachers[]', $teachers, old('teachers'), ['class' => 'form-control select2', 'multiple' => 'multiple']) !!}
-                    <p class="help-block"></p>
+                    <p class="help-block" value="{{ auth::user()->teachers }}"></p>
                     @if($errors->has('teachers'))
                         <p class="help-block">
                             {{ $errors->first('teachers') }}
@@ -28,7 +47,7 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('title', 'Title*', ['class' => 'control-label']) !!}
                     {!! Form::text('title', old('title'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
-                    <p class="help-block"></p>
+                    <p class="help-block" value="{{ auth::user()->title}}"></p>
                     @if($errors->has('title'))
                         <p class="help-block">
                             {{ $errors->first('title') }}
@@ -52,7 +71,7 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('description', 'Description', ['class' => 'control-label']) !!}
                     {!! Form::textarea('description', old('description'), ['class' => 'form-control ', 'placeholder' => '']) !!}
-                    <p class="help-block"></p>
+                    <p class="help-block" value="{{ auth::user()->description}}"></p>
                     @if($errors->has('description'))
                         <p class="help-block">
                             {{ $errors->first('description') }}
@@ -81,7 +100,7 @@
                     {!! Form::hidden('course_image_max_height', 4000) !!}
                     <p class="help-block"></p>
                     @if($errors->has('course_image'))
-                        <p class="help-block">
+                        <p class="help-block" value="{{ auth::user()->cource_image }}">
                             {{ $errors->first('course_image') }}
                         </p>
                     @endif
@@ -91,7 +110,7 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('start_date', 'Start date', ['class' => 'control-label']) !!}
                     {!! Form::text('start_date', old('start_date'), ['class' => 'form-control date', 'placeholder' => '']) !!}
-                    <p class="help-block"></p>
+                    <p class="help-block" value="{{ auth::user()->start_date}}"></p>
                     @if($errors->has('start_date'))
                         <p class="help-block">
                             {{ $errors->first('start_date') }}
@@ -106,7 +125,7 @@
                     {!! Form::checkbox('published', 1, false, []) !!}
                     <p class="help-block"></p>
                     @if($errors->has('published'))
-                        <p class="help-block">
+                        <p class="help-block" value="{{ auth::user()->published }}">
                             {{ $errors->first('published') }}
                         </p>
                     @endif
@@ -127,6 +146,11 @@
             autoclose: true,
             dateFormat: "{{ config('app.date_format_js') }}"
         });
+
+        function myFunction(){
+alert("THANKS FOR BUYING");
+
+        }
     </script>
 
 @stop

@@ -1,9 +1,14 @@
 <?php
-Route::get('/', 'HomeController@index');
+Route::get('/', function () {
+	$lessons = \App\Lesson::where('course_id', 3)->get();
+	return view('layouts.front')->with('lessons', $lessons);
+})->name('home');
+// Route::get('/', 'HomeController@index')->name('home');
 Route::get('/editor/{id}', 'CompilerController@tryit');
 Route::resource("compiler", "CompilerController");
 
 Route::get('course/{slug}', ['uses' => 'CoursesController@show', 'as' => 'courses.show']);
+Route::get('courses', ['uses' => 'HomeController@index', 'as' => 'courses.all']);
 Route::post('course/payment', ['uses' => 'CoursesController@payment', 'as' => 'courses.payment']);
 Route::post('course/{course_id}/rating', ['uses' => 'CoursesController@rating', 'as' => 'courses.rating']);
 

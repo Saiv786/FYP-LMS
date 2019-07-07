@@ -1,11 +1,11 @@
-@extends('layouts.home')
+@extends('layouts.user_layout')
 
 @section('content')
-    <div class="row">
+    {{-- <div class="row "> --}}
         <div class="col-md-8 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">{{-- {{ ucfirst(config('app.name')) }} --}} Login</div>
-                <div class="panel-body">
+                <div class="panel-body ">
 
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
@@ -19,7 +19,7 @@
                         </div>
                     @endif
 
-                    <form class="form-horizontal"
+                    <form class="form-horizontal "
                           role="form"
                           method="POST"
                           action="{{ url('login') }}">
@@ -77,5 +77,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    {{-- </div> --}}
 @endsection

@@ -1,6 +1,6 @@
-@extends('layouts.home')
+@extends('layouts.user_layout')
 
-@section('main')
+@section('content')
 
     @if (!is_null($purchased_courses))
         <h3>My courses</h3>

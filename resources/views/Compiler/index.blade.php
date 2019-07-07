@@ -1,6 +1,8 @@
-@extends('layouts.home')
+@extends('layouts.user_layout')
 
 @section('sidebar')
+            <div class="col-md-3">
+
     <p class="lead">Project
         <button type="button" name="add"  class="btn btn-success float-right" data-toggle="modal" data-target="#yourModal">Add Class</button>
     </p>
@@ -9,7 +11,7 @@
         {{-- @foreach ($courses as $list_lesson) --}}
             {{-- <a href="{{ route('lessons.show', [$list_lesson->course_id, $list_lesson->id]) }}" class="list-group-item" --}}
             {{-- <div class="input-group"> --}}
-                <a href="#" class="list-group-item" onclick="changeCoder(event,0)">
+                <a href="#" class="list-group-item col-md-9" onclick="changeCoder(event,0)">
                     Main
                 </a>
                 {{-- <span class="input-group-btn">
@@ -39,10 +41,14 @@
         </div>
       </div>
     </div>
+</div>
 @endsection
 
 
-@section('main')
+@section('content')
+<div class="col-md-9">
+
+                <div class="row">
 <head>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
@@ -159,7 +165,7 @@
                    var x=document.getElementById('class_name').value;
                    if(x!=""){
                     document.getElementById('class_name').value='';
-                   $('#class_tabs').append('<div id='+i+' class="input-group code-tab"><a href="#" class="list-group-item" onclick="changeCoder(event,'+i+')"> '+x+' </a><span class="input-group-btn"><button type="button" class="btn btn-danger" onclick="onDelete(event)"><i class="fa fa-trash"></i></button></span></div>');
+                   $('#class_tabs').append('<div id='+i+' class="input-group code-tab"><a href="#" class="list-group-item col-md-9" onclick="changeCoder(event,'+i+')"> '+x+' </a><span class="input-group-btn"><button type="button" class="btn btn-danger" onclick="onDelete(event)"><i class="fa fa-trash"></i></button></span></div>');
                    // $('#nav').append('<li class="nav-item"> <a href="#'+i+'a" data-toggle="tab">'+i+'</a>     </li>');
                    // $('#tab-content').append('<div class="tab-pane" id="'+i+'a">  <div id="coder'+i+'" name=coder'+i+'> fd</div>  </div>');
                     // var editor = ace.edit("coder"+i+"");
@@ -198,5 +204,6 @@
 
 </body>
 
-</html>
+</div>
+</div>
 @endsection
