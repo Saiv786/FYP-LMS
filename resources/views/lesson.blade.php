@@ -1,6 +1,6 @@
 @extends('layouts.user_layout')
 
-{{-- @section('sidebar')
+@section('sidebar')
 <div class="col-md-3">
 
     <p class="lead">{{ $lesson->course->title }}</p>
@@ -12,10 +12,19 @@
         @endforeach
     </div>
 </div>
-@endsection --}}
+@endsection
 
 @section('main')
 <div class="col-md-9">
+    <div class="row">
+
+    @if ($previous_lesson)
+        <p ><a class="genric-btn primary circle" href="{{ route('lessons.show', [$previous_lesson->course_id, $previous_lesson->id]) }}"><< {{ $previous_lesson->title }}</a></p>
+    @endif
+    @if ($next_lesson)
+        <p ><a class="genric-btn primary circle" href="{{ route('lessons.show', [$next_lesson->course_id, $next_lesson->id]) }}">{{ $next_lesson->title }} >></a></p>
+    @endif
+</div>
 
                 <div class="row">
     <h2>{{ $lesson->title }}</h2>

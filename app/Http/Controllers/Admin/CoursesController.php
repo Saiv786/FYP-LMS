@@ -66,7 +66,7 @@ class CoursesController extends Controller {
 		$course->teachers()->sync($teachers);
 
 		$validater = $this->validate($request, [
-			'title' => 'required|regex:/^[a-zA-Z]+$/|max:255',
+			// 'title' => 'required|regex:/^[a-zA-Z]+$/|max:255',
 
 		]);
 

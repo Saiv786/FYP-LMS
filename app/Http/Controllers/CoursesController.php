@@ -51,5 +51,8 @@ class CoursesController extends Controller {
 
 		return redirect()->back()->with('success', 'Thank you for rating.');
 	}
+	public function search(Request $request) {
+		\Log::debug($request->get('username'));
+	}
 
 }

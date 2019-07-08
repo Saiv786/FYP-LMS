@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" href="img/favicon.png" type="image/png">
+  <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/png">
   <title>Smart Educator</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.css">
@@ -36,7 +36,7 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <!-- Brand and toggle get grouped for better mobile display -->
-          <a class="navbar-brand logo_h" href="{{ route('home') }}"><img src="img/logo.png" alt=""></a>
+          <a class="navbar-brand logo_h" href="{{ route('home') }}"><img src="{{ asset('img/logo.png') }}" alt=""></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -90,11 +90,14 @@
 
               <li class="nav-item submenu dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-                <img class="avatar brround" src="img/testimonial/t1.jpg" alt="">
-<span class="avatar  brround" style="background-image: url(./assets/iimg/testimonial/t1.jpg)"></span>
+
+
+                {{-- <img class="avatar brround" src="img/testimonial/t1.jpg" alt=""> --}}
+                            <span class="avatar avatar-sm brround" style="background-image: url(./assets/img/author1.jpg)"></span>
                         {{ Auth::user()->name }}</a>
                     <ul class="dropdown-menu">
                           <li class="nav-item">
+
                             <a class="nav-link" href="{{ route('auth.logout') }}">Logout</a>
                          </li>
 
@@ -135,7 +138,7 @@
                 the space telescope known as the Hubble.
               </p>
               <div class="search_course_wrap">
-                <form action="" class="form_box d-flex justify-content-between w-100">
+                <form action="{{ route('search') }}" class="form_box d-flex justify-content-between w-100" method="POST">
                   <input type="text" placeholder="Search Courses" class="form-control" name="username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Courses'">
                   <button type="submit" class="btn search_course_btn">Search</button>
                 </form>
@@ -204,27 +207,30 @@
         </div>
       </div>
         <div class="section-top-border text-right">
-            <a href="#" class="primary-btn text-uppercase">Explore Courses</a>
+            <a href="{{ route('courses.all') }}" class="primary-btn text-uppercase">Explore Courses</a>
         </div>
       {{-- <div class="row"> --}}
       {{-- </div> --}}
       <div class="row">
         <!-- single course -->
-        @foreach($lessons as $lesson)
+        @foreach($courses as $course)
+        @if( $loop->iteration <5 )
         <div class="col-lg-3 col-md-6">
           <div class="single_course">
             <div class="course_head overlay">
-              <img class="img-fluid w-100" src="{{ asset('uploads/thumb/'.$lesson->lesson_image) }}" alt="">
+              <img class="img-fluid w-100" src="{{ asset('uploads/thumbs/'.$course->course_image) }}" alt="">
+              @foreach ($course->teachers as $singleTeachers)
               <div class="authr_meta">
                 <img src="img/author1.png" alt="">
-                <span>Mart Taylor</span>
+                <span>{{ $singleTeachers->name }}</span>
               </div>
+              @endforeach
             </div>
             <div class="course_content">
               <h4>
-                <a href="{{ route('lessons.show', [$lesson->course_id, $lesson->id]) }}">{{ $lesson->title }}</a>
+                <a href="{{ route('courses.show',  $course->id) }}">{{ $course->title }}</a>
               </h4>
-              <p>{{ $lesson->title }}</p>
+              <p>{{ $course->title }}</p>
               <div class="course_meta d-flex justify-content-between">
                {{--  <div>
                   <span class="meta_info">
@@ -243,6 +249,7 @@
             </div>
           </div>
         </div>
+        @endif
         @endforeach
       </div>
     </div>
@@ -250,7 +257,7 @@
   <!--================ End Popular Courses Area =================-->
 
 
-  <div class="container-fluid">
+  {{-- <div class="container-fluid">
     <h1 class="text-center my-3">Bootstrap 4 Card Carousel</h1>
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner row w-100 mx-auto">
@@ -352,7 +359,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
   <!--================ Start Fact Area =================-->
   <div class="fact_area overlay">
     <div class="container">
@@ -596,73 +603,7 @@
     </div>
   </div>
   <!--================ End Registration Area =================-->
-  <!--================ Start Events Area =================-->
-  <div class="events_area">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-6">
-          <div class="main_title">
-            <h2>Upcoming Events</h2>
-            <p>There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s
-              exciting to think about setting up your own viewing station.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="row">
-            <div class="col-lg-12 col-sm-12">
-              <div class="single_event">
-                <div class="row align-items-center">
-                  <div class="col-lg-6 col-md-5">
-                    <div class="event_thumb">
-                      <img src="img/event1.jpg" alt="">
-                    </div>
-                  </div>
-                  <div class="col-lg-6 col-md-7">
-                    <div class="event_details">
-                      <p>25th February, 2017</p>
-                      <h4>
-                        <a href="#">The Universe Through A Child S Eyes</a>
-                      </h4>
-                      <p>Lorem ipsum dolor sit amet consec tetur adipisicing elit, sed do eiusmod tempor incididunt labore dolor
-                        sit amet consec tetur adipisicing elit sed.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="row">
-            <div class="col-lg-12 col-sm-12">
-              <div class="single_event">
-                <div class="row align-items-center">
-                  <div class="col-lg-6 col-md-5">
-                    <div class="event_thumb">
-                      <img src="img/event2.jpg" alt="">
-                    </div>
-                  </div>
-                  <div class="col-lg-5 col-md-7">
-                    <div class="event_details">
-                      <p>25th February, 2017</p>
-                      <h4>
-                        <a href="#">The Universe Through A Child S Eyes</a>
-                      </h4>
-                      <p>Lorem ipsum dolor sit amet consec tetur adipisicing elit, sed do eiusmod tempor incididunt labore dolor
-                        sit amet consec tetur adipisicing elit sed.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--================ End Events Area =================-->
+
   <!--================ Start footer Area  =================-->
   <footer class="footer-area section_gap">
     <div class="container">
@@ -721,8 +662,7 @@
         </div>
       </div>
       <div class="row footer-bottom d-flex justify-content-between">
-        <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">Copyright © 2018 All rights reserved | This template is
-          made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#">Colorlib</a></p>
+        <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">Copyright © 2018 All rights reserved by website admins</p>
         <div class="col-lg-4 col-sm-12 footer-social">
           <a href="#"><i class="fa fa-facebook"></i></a>
           <a href="#"><i class="fa fa-twitter"></i></a>
@@ -735,21 +675,21 @@
   <!--================ End footer Area  =================-->
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="js/jquery-3.2.1.min.js"></script>
-  <script src="js/popper.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/stellar.js"></script>
-  <script src="js/countdown.js"></script>
-  <script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
-  <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
-  <script src="js/owl-carousel-thumb.min.js"></script>
-  <script src="js/jquery.ajaxchimp.min.js"></script>
-  <script src="vendors/counter-up/jquery.counterup.js"></script>
-  <script src="js/mail-script.js"></script>
+  <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+  <script src="{{ asset('js/popper.js') }}"></script>
+  <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('js/stellar.js') }}"></script>
+  <script src="{{ asset('js/countdown.js') }}"></script>
+  <script src="{{ asset('vendors/nice-select/js/jquery.nice-select.min.js') }}"></script>
+  <script src="{{ asset('vendors/owl-carousel/owl.carousel.min.js') }}"></script>
+  <script src="{{ asset('js/owl-carousel-thumb.min.js') }}"></script>
+  <script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
+  <script src="{{ asset('vendors/counter-up/jquery.counterup.js') }}"></script>
+  <script src="{{ asset('js/mail-script.js') }}"></script>
   <!--gmaps Js-->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-  <script src="js/gmaps.min.js"></script>
-  <script src="js/theme.js"></script>
+  <script src="{{ asset('js/gmaps.min.js') }}"></script>
+  <script src="{{ asset('js/theme.js') }}"></script>
 
 
   <script type="text/javascript">

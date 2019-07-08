@@ -9,7 +9,9 @@
         @foreach($purchased_courses as $course)
             <div class="col-sm-4 col-lg-4 col-md-4">
                 <div class="thumbnail">
-                    <img src="{{ asset('uploads/' . $course->course_image) }}" alt="">
+                    @if($course->course_image)
+                        <img src="{{ asset('uploads/thumbs/' . $course->course_image) }}" alt="">
+                    @endif
                     <div class="caption">
                         <h4><a href="{{ route('courses.show', [$course->id]) }}">{{ $course->title }}</a>
                         </h4>
@@ -27,17 +29,22 @@
 
     @endif
 
-    <h3>All courses</h3>
+    <h3>All coursesssss</h3>
     <div class="row">
     @foreach($courses as $course)
-        <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="col-sm-auto col-lg-auto col-md-auto" style="border:5px;">
             <div class="thumbnail">
-                <img src="{{ asset('uploads/' . $course->course_image) }}" alt="">
+                @if($course->course_image)
+                <img src="{{ asset('uploads/thumbs/' . $course->course_image) }}" alt="">
+                @endif
                 <div class="caption">
 
                     <h4><a href="{{ route('courses.show', [$course->id]) }}">{{ $course->title }}</a>
                     </h4>
-                    <p>{{ $course->description }}</p>
+                    <p>{{ str_limit($course->description , $limit = 10, $end = '...') }}
+
+                        {{-- {{ $course->description }} --}}
+                    </p>
                 </div>
                 <div class="ratings">
                     <p class="pull-right">Students: {{ $course->students()->count() }}</p>

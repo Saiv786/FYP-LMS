@@ -1,10 +1,11 @@
 <?php
 Route::get('/', function () {
-	$lessons = \App\Lesson::where('course_id', 3)->get();
-	return view('layouts.front')->with('lessons', $lessons);
+	$courses = \App\Course::all();
+	return view('layouts.front')->with('courses', $courses);
 })->name('home');
 // Route::get('/', 'HomeController@index')->name('home');
 Route::get('/editor/{id}', 'CompilerController@tryit');
+Route::post('/Search', 'CoursesController@search')->name('search');
 Route::resource("compiler", "CompilerController");
 
 Route::get('course/{slug}', ['uses' => 'CoursesController@show', 'as' => 'courses.show']);

@@ -15,7 +15,9 @@
 @endsection
 
 @section('content')
+<div class="col-md-9">
 
+                <div class="row">
 
     <h2>{{ $course->title }}</h2>
 
@@ -41,16 +43,22 @@
 
     <p>{{ $course->description }}</p>
 
+<ul>
 
     @foreach ($course->publishedLessons as $lesson)
         {{-- @if ($lesson->free_lesson)(FREE!)@endif  --}}
-        <h4>
+    <li >
+
+       <h4>
         {{ $loop->iteration }}.
         <a href="{{ route('lessons.show', [$lesson->course_id, $lesson->id]) }}" style="font:  normal bold 1.3em/1.5 sans-serif;">{{ $lesson->title }}</a>
         </h4>
+            {!! $lesson->full_text !!}
 
-        <p>{{ $lesson->short_text }}</p>
-        <hr />
+        {{-- <p>{{ $lesson->full_text }}</p> --}}
+    </li>
     @endforeach
-
+</ul>
+</div>
+</div>
 @endsection
