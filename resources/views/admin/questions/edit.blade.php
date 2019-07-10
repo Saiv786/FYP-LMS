@@ -55,8 +55,8 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('tests', 'Tests', ['class' => 'control-label']) !!}
-                    {!! Form::select('tests[]', $tests, old('tests') ? old('tests') : $question->tests->pluck('id')->toArray(), ['class' => 'form-control select2', 'multiple' => 'multiple']) !!}
+                    {!! Form::label('tests', 'Tests *', ['class' => 'control-label']) !!}
+                    {!! Form::select('tests[]', $tests, old('tests') ? old('tests') : $question->tests->pluck('id')->toArray(), ['class' => 'form-control select2', 'multiple' => 'multiple', 'required' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('tests'))
                         <p class="help-block">

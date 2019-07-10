@@ -72,4 +72,32 @@ class CompilerController extends Controller {
 	public function destroy(Tutorial $tutorial) {
 		return redirect('/tutorials')->with('success', 'Tutorial has been deleted Successfully');
 	}
+	public function mobile(Request $request) {
+		$tryit_code = $request->get('data');
+		$path = resource_path('assets/CompilerApiJar.jar');
+		// exec("java -jar ~/NetBeansProjects/JavaApplication7/dist/JavaApplication7.jar '{$tryit_code}' 'Hello,testing' ", $out);
+		exec("java -jar " . $path . "'{$tryit_code}' 'Hello,testing' ", $out);
+		\Log::debug("java -jar " . $path . " '{$tryit_code}' 'Hello,testing' ");
+		$compiler['output'] = implode("\n", $out);
+		\Log::debug($tryit_code);
+		\Log::debug($out);
+		$compiler['code'] = $tryit_code;
+		return view('Compiler.index', ['compiler' => $compiler]);
+		// return $compiler['output'];
+	}
+	public function mobile2(Request $request) {
+		$tryit_code = $request->get('data');
+		$path = resource_path('assets/CompilerApiJar.jar ');
+
+		// exec("java -jar ~/NetBeansProjects/JavaApplication7/dist/JavaApplication7.jar '{$tryit_code}' 'Hello,testing' ", $out);
+		exec("java -jar " . $path . "'{$tryit_code}' 'Hello,testing' ", $out);
+		\Log::debug("java -jar " . $path . " '{$tryit_code}' 'Hello,testing' ");
+		$compiler['output'] = implode("\n", $out);
+		\Log::debug($tryit_code);
+		\Log::debug($out);
+		$compiler['code'] = $tryit_code;
+		// return view('Compiler.index', ['compiler' => $compiler]);
+		return $compiler['output'];
+	}
+
 }

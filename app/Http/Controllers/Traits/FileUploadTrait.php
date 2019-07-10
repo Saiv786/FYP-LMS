@@ -28,7 +28,7 @@ trait FileUploadTrait {
 					if (!file_exists(public_path('uploads/thumb'))) {
 						mkdir(public_path('uploads/thumb'), 0777, true);
 					}
-					Image::make($file)->resize(200, 200)->save(public_path('uploads/thumbs') . '/' . $filename);
+					Image::make($file)->resize(300, 200)->save(public_path('uploads/thumbs') . '/' . $filename);
 					Image::make($file)->resize(50, 50)->save(public_path('uploads/thumb') . '/' . $filename);
 					$width = $image->width();
 					$height = $image->height();

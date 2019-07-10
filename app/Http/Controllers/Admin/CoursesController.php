@@ -71,11 +71,12 @@ class CoursesController extends Controller {
 		]);
 
 		if ($validater) {
+			Session::flash('messsage', "Oh snap!Change a few things up and try submitting again..");
 			return redirect()->route('admin.courses.index')->withErrors($validater);
 		} else {
 
-			Session::flash('message', "Successfully registered");
-
+			Session::flash('message', "Well done! Course successfully Created.");
+			
 			return redirect()->route('admin.courses.index');
 		}
 

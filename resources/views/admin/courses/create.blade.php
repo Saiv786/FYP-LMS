@@ -15,13 +15,15 @@
 @endif
 
 @if(Session::has('message'))
-                <div class="alert alert-success">
-                    {{ Session::get('message') }}
-                </div>
+<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><i class="fa fa-frown-o mr-2" aria-hidden="true"></i>
+    {{ Session::get('message') }}
+</div>
+                {{-- <div class="alert alert-success">
+                </div> --}}
                 @endif
 
     <h3 class="page-title">@lang('global.courses.title')</h3>
-    {!! Form::open(['onSubmit'=>"myFunction()",'method' => 'POST', 'route' => ['admin.courses.store'], 'files' => true,]) !!}
+    {!! Form::open(['method' => 'POST', 'route' => ['admin.courses.store'], 'files' => true,]) !!}
 
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -108,7 +110,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('start_date', 'Start date', ['class' => 'control-label']) !!}
+                    {!! Form::label('start_date', 'Start date *', ['class' => 'control-label']) !!}
                     {!! Form::text('start_date', old('start_date'), ['class' => 'form-control date', 'placeholder' => '']) !!}
                     <p class="help-block" value="{{ auth::user()->start_date}}"></p>
                     @if($errors->has('start_date'))
@@ -147,10 +149,10 @@
             dateFormat: "{{ config('app.date_format_js') }}"
         });
 
-        function myFunction(){
-alert("THANKS FOR BUYING");
+//         function myFunction(){
+// alert("THANKS FOR BUYING");
 
-        }
+//         }
     </script>
 
 @stop

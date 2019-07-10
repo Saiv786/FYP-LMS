@@ -7,7 +7,7 @@
 
         <div class="col-md-8 ">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading" style="background:white">Register</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
@@ -77,4 +77,5 @@
         </div>
     </div>
 </div>
+
 @endsection

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{ $page_title or 'OOP Teacher' }}</title>
+    <title>{{ $page_title or 'Smart Educator' }}</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/">OOP Teacher</a>
+                        <a class="navbar-brand" href="/">Smart Educator</a>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -143,7 +143,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; OOP Teacher 2017</p>
+                    <p>Copyright &copy; Smart Educator 2017</p>
                 </div>
             </div>
         </footer>

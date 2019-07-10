@@ -22,6 +22,14 @@
         <div class="panel-heading">
             @lang('global.app_list')
         </div>
+        @if(Session::has('message'))
+                {{-- <div class="alert alert-success">
+                    {{ Session::get('message') }}
+                </div> --}}
+                <div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <i class="fa fa-check-circle-o mr-2" aria-hidden="true"></i>{{ Session::get('message') }} 
+                </div>
+                @endif
 
         <div class="panel-body table-responsive">
             <table class="table table-bordered table-striped {{ count($courses) > 0 ? 'datatable' : '' }} @can('course_delete') @if ( request('show_deleted') != 1 ) dt-select @endif @endcan">

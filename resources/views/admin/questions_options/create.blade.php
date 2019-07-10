@@ -12,8 +12,8 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('question_id', 'Question', ['class' => 'control-label']) !!}
-                    {!! Form::select('question_id', $questions, old('question_id'), ['class' => 'form-control select2']) !!}
+                    {!! Form::label('question_id', 'Question *', ['class' => 'control-label']) !!}
+                    {!! Form::select('question_id', $questions, old('question_id'), ['class' => 'form-control select2', 'required' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('question_id'))
                         <p class="help-block">

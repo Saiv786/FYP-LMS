@@ -93,7 +93,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('start_date', 'Start date', ['class' => 'control-label']) !!}
+                    {!! Form::label('start_date', 'Start date *', ['class' => 'control-label']) !!}
                     {!! Form::text('start_date', old('start_date'), ['class' => 'form-control date', 'placeholder' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('start_date'))

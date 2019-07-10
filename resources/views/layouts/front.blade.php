@@ -56,12 +56,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('compiler.index') }}">Editor</a>
                 </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="about-us.html">About</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('courses.all') }}">Courses</a>
                 </li>
-                  <li class="nav-item submenu dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
-                        <ul class="dropdown-menu">
+                  {{-- <li class="nav-item submenu dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="{{ route('courses.all') }}">Courses</a> --}}
+                        {{-- <ul class="dropdown-menu">
                           <li class="nav-item">
                             <a class="nav-link" href="{{ route('courses.all') }}">Courses</a>
                         </li>
@@ -70,16 +70,10 @@
                         </li>
                           <li class="nav-item">
                             <a class="nav-link" href="elements.html">Elements</a>
-                        </li>
-                    </ul>
-                  </li>
-              <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
-                </ul>
-              </li>
+                    </li>
+                   </ul> --}}
+                  {{-- </li> --}}
+
               <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
               <li class="nav-item">
                 <a href="#" class="nav-link search" id="search">
@@ -446,14 +440,14 @@
   </div>
   <!--================ End Fact Area =================-->
   <!--================ Start Testimonial Area =================-->
-  <div class="section_gap testimonial_area">
+  {{-- <div class="section_gap testimonial_area">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10 text-center">
           <div class="active_testimonial owl-carousel" data-slider-id="1">
             <!-- single testimonial -->
-            <div class="single_testimonial">
-              <div class="testimonial_head">
+            <div class="single_testimonial"> --}}
+              {{-- <div class="testimonial_head">
                 <img src="img/quote.png" alt="">
                 <h4>Fanny Spencer</h4>
                 <div class="review">
@@ -463,14 +457,14 @@
                   <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                 </div>
-              </div>
-              <div class="testimonial_content">
+              </div> --}}
+              {{-- <div class="testimonial_content">
                 <p>As conscious traveling Paup ers we must always be oncerned about our dear Mother Earth. If you think about
                   it, you travel across her faceand She is the host to your journey.</p>
               </div>
             </div>
-            <div class="single_testimonial">
-              <div class="testimonial_head">
+            <div class="single_testimonial"> --}}
+              {{-- <div class="testimonial_head">
                 <img src="img/quote.png" alt="">
                 <h4>Fanny Spencer</h4>
                 <div class="review">
@@ -480,14 +474,14 @@
                   <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                 </div>
-              </div>
-              <div class="testimonial_content">
+              </div> --}}
+              {{-- <div class="testimonial_content">
                 <p>As conscious traveling Paup ers we must always be oncerned about our dear Mother Earth. If you think about
                   it, you travel across her faceand She is the host to your journey.</p>
               </div>
             </div>
-            <div class="single_testimonial">
-              <div class="testimonial_head">
+            <div class="single_testimonial"> --}}
+              {{-- <div class="testimonial_head">
                 <img src="img/quote.png" alt="">
                 <h4>Fanny Spencer</h4>
                 <div class="review">
@@ -497,14 +491,14 @@
                   <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                 </div>
-              </div>
-              <div class="testimonial_content">
+              </div> --}}
+              {{-- <div class="testimonial_content">
                 <p>As conscious traveling Paup ers we must always be oncerned about our dear Mother Earth. If you think about
                   it, you travel across her faceand She is the host to your journey.</p>
               </div>
             </div>
-            <div class="single_testimonial">
-              <div class="testimonial_head">
+            <div class="single_testimonial"> --}}
+            {{-- <div class="testimonial_head">
                 <img src="img/quote.png" alt="">
                 <h4>Fanny Spencer</h4>
                 <div class="review">
@@ -514,14 +508,14 @@
                   <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                 </div>
-              </div>
-              <div class="testimonial_content">
+              </div>  --}}
+              {{-- <div class="testimonial_content">
                 <p>As conscious traveling Paup ers we must always be oncerned about our dear Mother Earth. If you think about
                   it, you travel across her faceand She is the host to your journey.</p>
               </div>
             </div>
-          </div>
-          <div class="owl-thumbs d-flex justify-content-center" data-slider-id="1">
+          </div> --}}
+          {{-- <div class="owl-thumbs d-flex justify-content-center" data-slider-id="1">
             <div class="owl-thumb-item">
               <div class="position-relative">
                 <img class="img-fluid" src="img/testimonial/t1.jpg" alt="">
@@ -550,9 +544,11 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
   <!--================ End Testimonial Area =================-->
   <!--================ Start Registration Area =================-->
+  @if(Auth::check())
+  @else
   <div class="section_gap registration_area">
     <div class="container">
       <div class="row align-items-center">
@@ -560,40 +556,49 @@
           <div class="row clock_sec clockdiv" id="clockdiv">
             <div class="col-lg-12">
               <h1>Register Now</h1>
-              <p>There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s
-                exciting to think about setting up your own viewing station.</p>
+              <p>There is a moment in the life of any aspiring student that it is time to buy that first Book. It’s
+                exciting to think about setting up your own learning station.</p>
             </div>
-            <div class="col clockinner1 clockinner">
-              <h1 class="days">150</h1>
-              <span class="smalltext">Days</span>
-            </div>
-            <div class="col clockinner clockinner1">
-              <h1 class="hours">23</h1>
-              <span class="smalltext">Hours</span>
-            </div>
-            <div class="col clockinner clockinner1">
-              <h1 class="minutes">47</h1>
-              <span class="smalltext">Mins</span>
-            </div>
-            <div class="col clockinner clockinner1">
-              <h1 class="seconds">59</h1>
-              <span class="smalltext">Secs</span>
-            </div>
+
           </div>
         </div>
         <div class="col-lg-4 offset-lg-1">
           <div class="register_form">
             <h3>Courses for Free</h3>
             <p>It is high time for learning</p>
-            <form class="form_area" id="myForm" action="mail.html" method="post">
+            <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+              {{ csrf_field() }}
+              <input type="hidden" name="redirect_url" value="{{ request('redirect_url', '/') }}">
+
               <div class="row">
                 <div class="col-lg-12 form_group">
-                  <input name="name" placeholder="Your Name" required="" type="text">
-                  <input name="name" placeholder="Your Phone Number" required="" type="tel">
-                  <input name="email" placeholder="Your Email Address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required="" type="email">
+                    <input id="name" type="text" class="form-control" name="name" placeholder="Name" value="{{ old('name') }}" required >
+
+                    @if ($errors->has('name'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                    @endif
+
+                    <input id="email" type="email" class="form-control" name="email" placeholder="E-mail" value="{{ old('email') }}" required>
+
+                    @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
+                    <input id="password" placeholder="Password" type="password" class="form-control" name="password" required>
+
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="Confirm Password">
                 </div>
                 <div class="col-lg-12 text-center">
-                  <button class="primary-btn">Submit</button>
+                  <button class="primary-btn" type="submit">Submit</button>
+                  <a href="{{ route('auth.login') }}">Existing user? Log in here</a>
                 </div>
               </div>
             </form>
@@ -603,20 +608,12 @@
     </div>
   </div>
   <!--================ End Registration Area =================-->
-
+@endif
   <!--================ Start footer Area  =================-->
   <footer class="footer-area section_gap">
     <div class="container">
       <div class="row">
-        <div class="col-lg-2 col-md-6 single-footer-widget">
-          <h4>Top Products</h4>
-          <ul>
-            <li><a href="#">Managed Website</a></li>
-            <li><a href="#">Manage Reputation</a></li>
-            <li><a href="#">Power Tools</a></li>
-            <li><a href="#">Marketing Service</a></li>
-          </ul>
-        </div>
+
         <div class="col-lg-2 col-md-6 single-footer-widget">
           <h4>Quick Links</h4>
           <ul>
@@ -626,15 +623,7 @@
             <li><a href="#">Terms of Service</a></li>
           </ul>
         </div>
-        <div class="col-lg-2 col-md-6 single-footer-widget">
-          <h4>Features</h4>
-          <ul>
-            <li><a href="#">Jobs</a></li>
-            <li><a href="#">Brand Assets</a></li>
-            <li><a href="#">Investor Relations</a></li>
-            <li><a href="#">Terms of Service</a></li>
-          </ul>
-        </div>
+
         <div class="col-lg-2 col-md-6 single-footer-widget">
           <h4>Resources</h4>
           <ul>
@@ -644,22 +633,7 @@
             <li><a href="#">Agencies</a></li>
           </ul>
         </div>
-        <div class="col-lg-4 col-md-6 single-footer-widget">
-          <h4>Newsletter</h4>
-          <p>You can trust us. we only send promo offers,</p>
-          <div class="form-wrap" id="mc_embed_signup">
-            <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
-              <input class="form-control" name="EMAIL" placeholder="Your Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address'" required="" type="email">
-              <button class="click-btn btn btn-default">
-                <span>subscribe</span>
-              </button>
-              <div style="position: absolute; left: -5000px;">
-                <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-              </div>
-              <div class="info"></div>
-            </form>
-          </div>
-        </div>
+
       </div>
       <div class="row footer-bottom d-flex justify-content-between">
         <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">Copyright © 2018 All rights reserved by website admins</p>

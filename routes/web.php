@@ -6,7 +6,15 @@ Route::get('/', function () {
 // Route::get('/', 'HomeController@index')->name('home');
 Route::get('/editor/{id}', 'CompilerController@tryit');
 Route::post('/Search', 'CoursesController@search')->name('search');
+Route::get('/mobile', 'CompilerController@mobile');
 Route::resource("compiler", "CompilerController");
+
+Route::get('/contactUs', function () {
+	return view('contactUs');
+});
+Route::get('/logins', function () {
+	return view('demo');
+});
 
 Route::get('course/{slug}', ['uses' => 'CoursesController@show', 'as' => 'courses.show']);
 Route::get('courses', ['uses' => 'HomeController@index', 'as' => 'courses.all']);

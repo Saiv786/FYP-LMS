@@ -9,21 +9,24 @@
   <title>Smart Educator</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="{{asset('css/bootstrap.css') }}">
-  {{-- <link rel="stylesheet" href="{{asset('vendors/linericon/style.css') }}"> --}}
+  <link rel="stylesheet" href="{{asset('vendors/linericon/style.css') }}">
   <link rel="stylesheet" href="{{asset('css/font-awesome.min.css') }}">
-  {{-- <link rel="stylesheet" href="{{asset('vendors/owl-carousel/owl.carousel.min.css') }}"> --}}
-  {{-- <link rel="stylesheet" href="{{asset('vendors/lightbox/simpleLightbox.css') }}"> --}}
-  {{-- <link rel="stylesheet" href="{{asset('vendors/nice-select/css/nice-select.css') }}"> --}}
-  {{-- <link rel="stylesheet" href="{{asset('vendors/animate-css/animate.css') }}"> --}}
+  <link rel="stylesheet" href="{{asset('vendors/owl-carousel/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{asset('vendors/lightbox/simpleLightbox.css') }}">
+  <link rel="stylesheet" href="{{asset('vendors/nice-select/css/nice-select.css') }}">
+  <link rel="stylesheet" href="{{asset('vendors/animate-css/animate.css') }}">
   <!-- Dashboard Css -->
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet" />
   <!-- main css -->
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
+
 </head>
 
 <body>
   <!--================ Start Header Menu Area =================-->
-  <header class="header_area">
+  <header class="header_area" style="background:white">
 
     {{-- <div class="main_menu">
       <div class="search_input" id="search_input_box">
@@ -58,30 +61,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('compiler.index') }}">Editor</a>
                 </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="about-us.html">About</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('courses.all') }}">Courses</a>
                 </li>
-                  <li class="nav-item submenu dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
-                        <ul class="dropdown-menu">
-                          <li class="nav-item">
-                            <a class="nav-link" href="{{ route('courses.all') }}">Courses</a>
-                        </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="course-details.html">Course Details</a>
-                        </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="elements.html">Elements</a>
-                        </li>
-                    </ul>
-                  </li>
-              <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
-                </ul>
-              </li>
+                
+                  
+              
               <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
               <li class="nav-item">
                 <a href="#" class="nav-link search" id="search">
@@ -92,8 +77,8 @@
 
               <li class="nav-item submenu dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-                <img class="avatar brround" src="img/testimonial/t1.jpg" alt="">
-<span class="avatar  brround" style="background-image: url(./assets/iimg/testimonial/t1.jpg)"></span>
+                {{-- <img class="avatar brround" src="img/testimonial/t1.jpg" alt=""> --}}
+{{-- <span class="avatar  brround" style="background-image: url(./assets/iimg/testimonial/t1.jpg)"></span> --}}
                         {{ Auth::user()->name }}</a>
                     <ul class="dropdown-menu">
                           <li class="nav-item">
@@ -120,7 +105,7 @@
     </div>
   </header>
   <!--================ End Header Menu Area =================-->
-  <div class="section_gap testimonial_area">
+  <div class="section_gap testimonial_area" style="background:white">
     {{-- <div class="container">
       @yield('content')
     </div> --}}
@@ -155,15 +140,7 @@
   <footer class="footer-area section_gap">
     <div class="container">
       <div class="row">
-        <div class="col-lg-2 col-md-6 single-footer-widget">
-          <h4>Top Products</h4>
-          <ul>
-            <li><a href="#">Managed Website</a></li>
-            <li><a href="#">Manage Reputation</a></li>
-            <li><a href="#">Power Tools</a></li>
-            <li><a href="#">Marketing Service</a></li>
-          </ul>
-        </div>
+       
         <div class="col-lg-2 col-md-6 single-footer-widget">
           <h4>Quick Links</h4>
           <ul>
@@ -173,15 +150,7 @@
             <li><a href="#">Terms of Service</a></li>
           </ul>
         </div>
-        <div class="col-lg-2 col-md-6 single-footer-widget">
-          <h4>Features</h4>
-          <ul>
-            <li><a href="#">Jobs</a></li>
-            <li><a href="#">Brand Assets</a></li>
-            <li><a href="#">Investor Relations</a></li>
-            <li><a href="#">Terms of Service</a></li>
-          </ul>
-        </div>
+       
         <div class="col-lg-2 col-md-6 single-footer-widget">
           <h4>Resources</h4>
           <ul>
@@ -191,22 +160,7 @@
             <li><a href="#">Agencies</a></li>
           </ul>
         </div>
-        <div class="col-lg-4 col-md-6 single-footer-widget">
-          <h4>Newsletter</h4>
-          <p>You can trust us. we only send promo offers,</p>
-          <div class="form-wrap" id="mc_embed_signup">
-            <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
-              <input class="form-control" name="EMAIL" placeholder="Your Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address'" required="" type="email">
-              <button class="click-btn btn btn-default">
-                <span>subscribe</span>
-              </button>
-              <div style="position: absolute; left: -5000px;">
-                <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-              </div>
-              <div class="info"></div>
-            </form>
-          </div>
-        </div>
+        
       </div>
       <div class="row footer-bottom d-flex justify-content-between">
         <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">Copyright © 2018 All rights reserved | This template is
@@ -228,11 +182,11 @@
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('js/stellar.js') }}"></script>
   <script src="{{ asset('js/countdown.js') }}"></script>
-  {{-- <script src="{{ asset('vendors/nice-select/js/jquery.nice-select.min.js') }}"></script> --}}
-  {{-- <script src="{{ asset('vendors/owl-carousel/owl.carousel.min.js') }}"></script> --}}
+  <script src="{{ asset('vendors/nice-select/js/jquery.nice-select.min.js') }}"></script>
+  <script src="{{ asset('vendors/owl-carousel/owl.carousel.min.js') }}"></script>
   <script src="{{ asset('js/owl-carousel-thumb.min.js') }}"></script>
   <script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
-  {{-- <script src="{{ asset('vendors/counter-up/jquery.counterup.js') }}"></script> --}}
+  <script src="{{ asset('vendors/counter-up/jquery.counterup.js') }}"></script>
   <script src="{{ asset('js/mail-script.js') }}"></script>
   <!--gmaps Js-->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
